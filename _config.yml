@@ -1,18 +1,16 @@
 # Site settings
-title: Jekyll-Uno
-description: 'Jekyll-Uno - a minimal, responsive theme for Jekyll'
+title: Code Ninja Blog
+description: 'Where I discuss and show off code'
 url: 'http://codeninja.blog/'
 baseurl: '/'
-# google_analytics: 'UA-XXXXXX-X'
-# disqus_shortname: 'your-disqus-name'
 
 author:
   name: 'Jeff Massung'
   email: massung@gmail.com
-  twitter_username: risrr
-  #facebook_username: joshgerdes
+  #twitter_username: risrr
+  #facebook_username: massung
   github_username:  massung
-  linkedin_username:  massung
+  #linkedin_username:  massung
 
 defaults:
   -
