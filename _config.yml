@@ -1,15 +1,13 @@
-title: "code ninja . blog"
-description: "where I show and discuss things I"m working on..."
-url: "http://codeninja.blog/"
-baseurl: "/"
+name: code ninja . blog
+description: where I show and discuss things I"m working on...
+url: http://codeninja.blog/
+baseurl: /
 
 author:
-  name: "Jeff Massung"
+  name: Jeff Massung
   email: massung@gmail.com
-  #twitter_username: risrr
-  #facebook_username: massung
   github_username:  massung
-  #linkedin_username:  massung
+  #twitter_username: risrr
 
 defaults:
   -
@@ -32,5 +30,5 @@ kramdown:
   # do not replace newlines by <br>s
   hard_wrap: false
 
-gems: ["jekyll-paginate"]
-exclude: ["README.md", "Gemfile", "Gemfile.lock", "screenshot.png"]
+gems: [jekyll-paginate]
+exclude: [README.md, Gemfile, Gemfile.lock]
