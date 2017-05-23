@@ -1,5 +1,4 @@
-# Site settings
-title: foo
+title: "code ninja . blog"
 description: "where I show and discuss things I"m working on..."
 url: "http://codeninja.blog/"
 baseurl: "/"
