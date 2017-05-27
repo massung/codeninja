@@ -1,0 +1,17 @@
+---
+title:  "CHIP-8 Emulator in Go"
+date:   2017-05-26
+categories: [programming,go,emulator]
+tags: [go,emulation,chip8]
+---
+Last Christmas I had some spare time and just felt like coding something up. I was feeling not only a bit nostalgic, So, I decided to write a CHIP-8 emulator; something very doable within a week off work.
+
+[https://massung.github.io/CHIP-8/](https://massung.github.io/CHIP-8/)
+
+But, then the week went by, and while the emulator was fine, I wasn't quite content. Most of the games for it were terribly coded and so I was going to have to program a few of my own. Fast forward another few days and I had a CHIP-8 assembler along with debugger and output log.
+
+![CHIP-8 Emulator](https://massung.github.io/CHIP-8/data/screencap.gif "Lunar Lander")
+
+Feel free to download it, play some CHIP-8 games, and create some of your own. 
+
+Enjoy!
