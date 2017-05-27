@@ -6,7 +6,7 @@ tags: [elm,hn]
 ---
 About a year ago I put together a little [Hacker News][hn] reader in [Elm][elm]. I've now moved it to this blog for posterity and ease of accessibility.
 
-[http://home.codeninja.blog/hn](http://home.codeninja.blog/hn)
+[http://hn.codeninja.blog](http://hn.codeninja.blog)
 
 The [sources][sources] are freely available on GitHub. If you are new to [Elm][elm] I also put together a little introduction to the Elm Architecture in the [README][readme]. It starts from "hello world" and drills down into the guts so you can really understand what's going on when making your own apps.
 
