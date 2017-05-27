@@ -6,7 +6,7 @@ tags: [go,emulation,chip8]
 ---
 Last Christmas I had some spare time and just felt like coding something up. I was feeling a bit nostalgic, so I decided to write a CHIP-8 emulator; something very doable within a week off work.
 
-[https://chip8.codeninja.blog](https://chip8.codeninja.blog)
+[http://chip8.codeninja.blog](http://chip8.codeninja.blog)
 
 But, then the week went by, and while the emulator was fine, I wasn't quite content. Most of the games for it were terribly coded and so I was going to have to program a few of my own. Fast forward another few days and I had a CHIP-8 assembler along with debugger and output log.
 
