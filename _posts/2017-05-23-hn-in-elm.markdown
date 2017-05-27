@@ -8,7 +8,7 @@ About a year ago I put together a little [Hacker News][hn] reader in [Elm][elm].
 
 [http://home.codeninja.blog/hn](http://home.codeninja.blog/hn)
 
-The [sources](source) are freely available on GitHub. If you are new to [Elm](elm) I also put together a little introduction to the Elm Architecture in the [README](readme). It starts from "hello world" and drills down into the guts so you can really understand what's going on when making your own apps.
+The [sources](sources) are freely available on GitHub. If you are new to [Elm](elm) I also put together a little introduction to the Elm Architecture in the [README](readme). It starts from "hello world" and drills down into the guts so you can really understand what's going on when making your own apps.
 
 Enjoy!
 
