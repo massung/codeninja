@@ -1,14 +1,14 @@
 ---
 title:  "Hacker News app in Elm"
 date:   2017-05-23
-categories: [elm,hn]
+categories: [programming,elm]
 tags: [elm,hn]
 ---
 About a year ago I put together a little [Hacker News][hn] reader in [Elm][elm]. I've now moved it to this blog for posterity and ease of accessibility.
 
-* [http://hn.codeninja.blog](http://hn.codeninja.blog)
+[http://hn.codeninja.blog](http://hn.codeninja.blog)
 
-The [sources](source) are freely available on GitHub. If you are new to [Elm](elm) I also put together a little introduction to the Elm Architecture in the [README](readme). It starts from "hello world" and drills down into the guts so you can really understand what's going on when making your own apps.
+The [sources][sources] are freely available on GitHub. If you are new to [Elm][elm] I also put together a little introduction to the Elm Architecture in the [README][readme]. It starts from "hello world" and drills down into the guts so you can really understand what's going on when making your own apps.
 
 Enjoy!
 
