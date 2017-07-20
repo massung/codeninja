@@ -1,0 +1,21 @@
+---
+title: "Huffman coding in Go"
+date: 2017-07-19
+categories: [programming,go,huffman]
+tags: [programming,go,huffman]
+---
+For another project I'm working on I needed to [Huffman encode][1] text strings into bit vectors. I saw a few other Huffman libraries on [GoDoc][2], but they didn't really seem to do what I wanted or depended on other libraries when Huffman coding is not that difficult to implement. So, I decided to just crank one out real quick and thought others might find it useful as well.
+
+[http://github.com/massung/go-huffman](http://github.com/massung/go-huffman)
+
+What makes this one unique from the others I've come across are:
+
+* It encodes to an `[]int32` (bit vector) as opposed to another string.
+* The tree can be created from a `string`, `[]rune`, or `map[rune]float64`.
+
+I'm also going to be adding support for serializing and deserializing of the tree, which is needed if you want to save the tree with some encoded data to be decoded at a later time.
+
+Cheers!
+
+[1]: https://en.wikipedia.org/wiki/Huffman_coding
+[2]: https://godoc.org/?q=huffman
