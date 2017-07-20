@@ -11,9 +11,41 @@ For another project I'm working on I needed to [Huffman encode][1] text strings 
 What makes this one unique from the others I've come across are:
 
 * It encodes to an `[]int32` (bit vector) as opposed to another string.
-* The tree can be created from a `string`, `[]rune`, or `map[rune]float64`.
+* Create the tree from a `string`, `[]rune`, or `map[rune]float64`.
+* Encoding *and* decoding.
 
-I'm also going to be adding support for serializing and deserializing of the tree, which is needed if you want to save the tree with some encoded data to be decoded at a later time.
+Example code:
+
+```go
+package main
+
+import "github.com/massung/go-hufffman"
+
+var (
+    loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+)
+
+func main() {
+    tree := huffman.NewTree(loremIpsum)
+
+    // encode the source string
+    bitVec, size, err := tree.Encode(loremIpsum)
+    if err != nil {
+        panic(err)
+    }
+
+    // decode the bit vector back into a string
+    s, err := tree.Decode(bitVec, size)
+    if err != nil {
+        panic(err)
+    }
+
+    // should print "true 445 232"
+    println(s == loremIpsum, len(loremIpsum), len(bitVec)*4)
+}
+```
+
+I still plan on adding support for serializing and deserializing of the tree, which is needed if you want to encoded data intended to be decoded at a later time or on another machine. If you think you could benefit from that soon, let me know and I'll add it sooner.
 
 Cheers!
 
