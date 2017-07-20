@@ -10,9 +10,9 @@ For another project I'm working on I needed to [Huffman encode][1] text strings 
 
 What makes this one unique from the others I've come across are:
 
-* It encodes to an `[]int32` (bit vector) as opposed to another string.
+* Encoding *and* decoding to/from a `[]uint32` bit vector.
 * Create the tree from a `string`, `[]rune`, or `map[rune]float64`.
-* Encoding *and* decoding.
+* TODO: Ability to serialize and deserialize the tree.
 
 Example code:
 
