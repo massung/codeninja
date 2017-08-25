@@ -12,8 +12,8 @@ So, I decided to just sit down over the past couple days and crank out a [skelet
 
 The skeleton uses [SBT][sbt] to compile and build the app. It's pre-setup for use with [Electron][electron] (for desktop apps) or [Express][express]. It's also pre-setup for use with [VSCode][vscode], as it has 3 launch configurations: run, debug, and serve.
 
-![skeleton](/_posts/images/scala-js-skeleton.png)
-[http://github.com/massung/scala-js-skeleton](http://github.com/massung/scala-js-skeleton)
+![skeleton](https://raw.githubusercontent.com/massung/codeninja/master/_posts/images/scala-js-skeleton.png)
+[https://github.com/massung/scala-js-skeleton](https://github.com/massung/scala-js-skeleton)
 
 I hope this gets a few more people using [ScalaJS][scalajs] and/or [Scala][scala]!
 
