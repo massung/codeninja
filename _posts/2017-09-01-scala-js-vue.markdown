@@ -1,8 +1,8 @@
 ---
 title: "ScalaJS Facade for Vue.js"
 date: 2017-09-01
-categories: [scala,js,vue,programming]
-tags: [scala,js,vue,reactive]
+categories: [scala,js,facade,vue,programming]
+tags: [scala,js,facade,vue,reactive]
 ---
 I had just finished up my [ScalaJS G8 Skeleton][skeleton], and thought I'd take a little time out from the daily grind and play around with reactive frameworks. And what better first app than the "hello world" of web apps: a TODO list?
 
