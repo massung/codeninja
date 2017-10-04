@@ -21,7 +21,7 @@ I've been pretty much behind-the-times when it comes to [Twitter][twitter]. I ha
 
 Now, it'd been a while since I put together a desktop app in [Scala][scala], and since then [ScalaFX][scalafx] has come along nicely, and when combined with [Monix][monix], say "hello" to some snappy, easy-to-build, functional, reactive user interfaces for the desktop!
 
-```
+```scala
 val verifiedUser = PublishSubject[Option[twitter4j.User]]()
 
 // When the user changes, download all the users's list subscriptions.
@@ -52,6 +52,7 @@ The above code is a bit simplified, but should get the idea across. Everything i
 If you haven't yet had a chance to try [Monix][monix] (or [ScalaFX][scalafx]) in your project, I recommend coming up with an excuse to give them both a try... together if possible!
 
 ![screenshot](https://raw.githubusercontent.com/massung/codeninja/master/_posts/images/scala-twitter-client.png)
+
 *RIP Tom Petty!*
 
 I still have a few more features to add before I'd consider it "RC-1", but all the basics are in place and I pretty much have it running daily on my work machine and at home. I hope to make the app available at some point in the near future and possibly the sources as well.
