@@ -4,13 +4,14 @@ date: 2017-10-04
 categories: [scala,scalafx,monix,twitter,programming]
 tags: [scala,scalafx,monix,twitter]
 ---
-One of my favorite projects to do when learning a new language is an [RSS][rss] feed reader. It tends to hit many of the major "can I get things done?" parts of a new language that interest me:
+One of my favorite projects when learning a new language is an [RSS][rss] reader. It tends to hit many of the major "can I get things done?" parts of a new language that interest me:
 
 * Net libraries
 * Threading
 * Parsing
 * Error handling
 * Method dispatch
+* Multi-source aggregation
 * UI/reactive
 
 And as easy as it sounds, there's quite a lot that can go into such a simple project. And this gets even more "fun" when you consider adding in UI (whether it's web or desktop).
