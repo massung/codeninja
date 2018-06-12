@@ -282,6 +282,10 @@ While our derived use-case for a monad was code that contained side-effects, not
 
 These are all examples of a value in a context for which mapping a function should result in a new value in the same type context. Once a value is Optional, any result derived from it _must also be Optional_. The same goes for Try, Futures, Eithers, etc.
 
+## fin.
+
+I hope this helps you to understand monads a bit more, what problem(s) they are used to solve, and - more importantly - giving you the knowledge to know when and how to use them effectively!
+
 [google]:    https://www.google.com/search?q=monad
 [wikipedia]: https://en.wikipedia.org/wiki/Monad_(functional_programming)
 [theory]:    https://en.wikipedia.org/wiki/Monad_(category_theory)
