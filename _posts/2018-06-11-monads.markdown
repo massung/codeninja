@@ -286,8 +286,11 @@ These are all examples of a value in a context for which mapping a function shou
 
 I hope this helps you to understand monads a bit more, what problem(s) they are used to solve, and - more importantly - giving you the knowledge to know when and how to use them effectively!
 
+*Special thanks to [cats-effect][cats] library contributors! I've paraphrased some of their code in the making of this post.*
+
 [google]:    https://www.google.com/search?q=monad
 [wikipedia]: https://en.wikipedia.org/wiki/Monad_(functional_programming)
 [theory]:    https://en.wikipedia.org/wiki/Monad_(category_theory)
 [laws]:      https://wiki.haskell.org/Monad_laws
 [scala]:     https://www.scala-lang.org/
+[cats]:      https://typelevel.org/cats-effect/
