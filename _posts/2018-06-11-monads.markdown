@@ -198,17 +198,15 @@ Let's test it:
 
 ```scala
 scala> IO(println("Hello")).bind(fmap(pair))
-res: io.Effect[Unit] = Bind(Thunk(.., ..))
+res: io.Effect[(Unit, Unit)] = Bind(Thunk(.., ..))
 ```
 
 Excellent! We've successfully chained effect values and nothing has been evaluated. What's needed now is a method of evaluating an effect.
 
 ```scala
-def run[A](effect: io.Effect[A]): A = {
-  effect match {
-    case io.Thunk(f)   => f()
-    case io.Bind(a, f) => run(f(run(a)))
-  }
+def run[A](effect: io.Effect[A]): A = effect match {
+  case io.Thunk(f)   => f()
+  case io.Bind(a, f) => run(f(run(a)))
 }
 ```
 
@@ -236,6 +234,8 @@ res: (Unit, Unit) = ((), ())
 ```
 
 At this point we can create effect values, pass them to functions, and evaluate them to get a final result. And we can run evaluate our effect as many times as we like and get the effect each time.
+
+More importantly, it's guarantees type safety. The compiler knows when we're working with pure values vs. effect values, and won't let us use a pure function in an effect context!
 
 ## What Was Accomplished?
 
