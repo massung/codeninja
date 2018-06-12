@@ -235,7 +235,7 @@ res: (Unit, Unit) = ((), ())
 
 At this point we can create effect values, pass them to functions, and evaluate them to get a final result. And we can run evaluate our effect as many times as we like and get the effect each time.
 
-More importantly, it's guarantees type safety. The compiler knows when we're working with pure values vs. effect values, and won't let us use a pure function in an effect context!
+More importantly, it's guarantees type safety. The compiler knows when we're working with pure values vs. effect values, and won't let us use a pure function with an effect value without first mapping it so we get an effect back!
 
 ## What Was Accomplished?
 
