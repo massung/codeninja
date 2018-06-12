@@ -1,0 +1,289 @@
+---
+title: "Why Monads?"
+date: 2018-06-11
+categories: [scala,monads,programming]
+tags: [scala,monads]
+---
+Recently I had the unlucky experience of trying to explain to some friends (over Slack - a horrible medium for teaching) what monads are. Even worse, because they are smart, experienced programmers, trying to explain why they matter - and what they fix - as opposed to being a "smart man's obfuscation" proved difficult.
+
+I went away for a while and started really putting some thought into it. I've gotten so used to using them that I never thought too hard about why. This post is about why, and - hopefully - at the same time help others who have a difficult time grokking them....
+
+<hr />
+
+## Why Are Monads Hard?
+
+The fact that there are [pages and pages][google] of the Internet dedicated to trying to explain monads to (very smart!) programmers is a testament to how difficult they are to learn.
+
+But why is that? The top Google hit is [Wikipedia][wikipedia], which rightfully goes over history and the formal definition, but isn't what the average programmer needs to start being productive. If I need help learning how to integrate an equation quickly, the chain rule is what I want, not a history and proof of the chain rule.
+
+There are also gobs of blog posts (like this one), but most of them end up falling into one of a few categories:
+
+* reciting back the monadic [laws][laws] to the reader - not adding anything new to their already limited understanding;
+
+* attempting to use some analogy with containers that leaves the reader wondering how that is possibly better than just using the data directly or how to they would make use of this in their own code effectively; or
+
+* they dive deep into a pool of functional programming kool-aid, which leaves the author feeling quite proud, but the reader probably stopped somewhere in the middle.
+
+## How Is This Post Different?
+
+I plan on walking you - the reader - through the actual problem. Talk about why it is a problem, and then we'll derive a solution together. In the end, we'll be close enough to monads that my hope will be you understand why they are useful, when to use them, and how to use them effectively.
+
+## Values: Pure vs. Effect
+
+We'll begin with a premise: all code produces values. And those values fall into one of two categories: _pure_ or an _effect_.  In [Scala][scala], for example consider the following two lines of code:
+
+```scala
+scala> 3                  // pure
+res: Int = 3
+
+scala> println("hello")   // effect
+Hello
+res: Unit = ()
+```
+
+In the first line, there was no side-effect that needed to happen in order for the resulting value to be returned. Where-as there was for the second.
+
+## The Problem
+
+We'll start with a simple function:
+
+```scala
+scala> def pair[T](x: T) = (x, x)
+defined function pair
+```
+
+Let's consider the following snip of code using a _pure_ value:
+
+```scala
+scala> val x = 3
+res2: Int = 3
+
+scala> pair(x)
+res3: (Int, Int) = (3, 3)
+```
+
+Simple enough. Now let's try the same code with an _effect_ value:
+
+```scala
+scala> val x = println("Hello")
+Hello
+
+scala> pair(x)
+res4: (Unit, Unit) = ((), ())
+```
+
+The problem is that the value of `x` is the result of an effect that took place long before it was going to be used. No matter how many times we use `x`, it'll never evaluate its effect ever again.
+
+Instead of using the result of the value, what we need to do is pass a _description_ of how the result is gotten.
+
+## A Naive Solution
+
+A simple solution would be to simply wrap the value in a function:
+
+```scala
+scala> def x = println("Hello")
+defined function x
+
+scala> pair(x)
+Hello
+res: (Unit, Unit) = ((), ())
+```
+
+Done, right? Well, not quite.
+
+The value `x` is an _effect_ value. By definition, any use of it also constitutes an _effect_. Thinking about it another way, if you have a function that runs asynchronously, any code that calls it must also be considered asynchronous.
+
+```scala
+scala> val y = pair(x)
+Hello
+res: (Unit, Unit) = ((), ())
+
+scala> y
+res: (Unit, Unit) = ((), ())
+```
+
+Evaluating `y` didn't cause the effect to happen, because it already did. To fix this, we need to make any value that uses `x` an effect, too:
+
+```scala
+scala> def y = pair(x)
+defined function y
+
+scala> y
+Hello
+res: (Unit, Unit) = ((), ())
+
+scala> y
+Hello
+res: (Unit, Unit) = ((), ())
+```
+
+Doing this is not only annoying, but it also fails type safety. The compiler cannot tell which values are pure and which are effects. This means we can accidentally use the results of an effect value in a "pure" context, which will end up resulting in bugs. Imagine using the results of an asynchronous operation w/o knowing it was asynchronous. You might read the value before it was computed or after it was modified.
+
+What we really need is a formal, type safe way of knowing when we are using a pure value or an effect.
+
+## An Effect Type
+
+Let's define a type that can be used represent effect values. This way, the compiler will keep us safe.
+
+```scala
+object io {
+  abstract class Effect[A]
+
+  // an effect that needs evaluated
+  case class Thunk[A](thunk: () => A) extends Effect[A]
+}
+```
+
+The `Effect` is a base type we can use to describe all sorts of values. It doesn't hold the result of an effect, but is merely a _description_ of how to get it. Now, we should be able to declare variables that are effects:
+
+```scala
+scala> val x = io.Thunk(() => println("Hello"))
+x: io.Thunk[Unit] = Thunk(..)
+```
+
+And, if we try and use it, we're simply passing around the effect and not an evaluated result.
+
+```scala
+scala> pair(x)
+res: (io.Thunk[Unit], io.Thunk[Unit]) = (
+  Thunk(..),
+  Thunk(..)
+)
+```
+
+But, that's not really what we want. What's desired the result of the effect to be paired: `Effect[(Unit,Unit)]`. What's needed now is a way to "bind" the effect to a function. We define a new `Bind` type to represent this new effect value:
+
+```scala
+object io {
+  abstract class Effect[A] {
+    def bind[B](f: A => Effect[B]): Effect[B] = Bind(this, f)
+  }
+
+  // an effect that needs evaluated
+  case class Thunk[A](thunk: () => A) extends Effect[A]
+  case class Bind[A, B](a: Effect[A], f: A => Effect[B]) extends Effect[B]
+}
+```
+
+Why does `f` need to return an `Effect[A]`?
+
+Don't forget that by using an effect value, the result is also - by definition - an effect value.
+
+*An astute reader will notice that our `bind` method has the same type signature as Scala's `flatMap` method.*
+
+Let's try it out...
+
+```scala
+scala> io.Thunk(() => println("Hello")).bind {
+  x => Thunk(() => (x, x))
+}
+res: io.Effect[Unit] = Bind(Thunk(.., ..))
+```
+
+Let's simplify this with a helper function that can "map" a _pure_ function (a function that takes and returns pure values) into a function that returns an _effect_ value.
+
+```scala
+def fmap[A, B](f: A => B): (A => io.Effect[B]) = {
+  x => io.Thunk(() => f(x))
+}
+```
+
+And let's also make a helper function that let's us more easily define a `Thunk`:
+
+```scala
+def IO[T](x: => T) = io.Thunk(() => x)
+```
+
+Let's test it:
+
+```scala
+scala> IO(println("Hello")).bind(fmap(pair))
+res: io.Effect[Unit] = Bind(Thunk(.., ..))
+```
+
+Excellent! We've successfully chained effect values and nothing has been evaluated. What's needed now is a method of evaluating an effect.
+
+```scala
+def run[A](effect: io.Effect[A]): A = {
+  effect match {
+    case io.Thunk(f)   => f()
+    case io.Bind(a, f) => run(f(run(a)))
+  }
+}
+```
+
+Let's see if it works...
+
+```scala
+scala> val x = IO { println("Hello") }
+x: io.Thunk[Unit] = Thunk(..)
+
+scala> run(x)
+Hello
+res: Unit = ()
+
+scala> run(x)
+Hello
+res: Unit = ()
+
+scala> run(x bind fmap(pair))
+Hello
+res: (Unit, Unit) = ((), ())
+
+scala> run(x bind { e => IO(e, e) })
+Hello
+res: (Unit, Unit) = ((), ())
+```
+
+At this point we can create effect values, pass them to functions, and evaluate them to get a final result. And we can run evaluate our effect as many times as we like and get the effect each time.
+
+## What Was Accomplished?
+
+That seems like an awful lot of work/abstraction. Did we actually accomplish anything? Let's recap what the problem:
+
+* There are two categories of values: pure and effect.
+* Effect values can't be evaluated more than once.
+* It's impossible to tell (by type) which category a value falls into.
+
+To fix this we...
+
+* defined a formal, type-safe structure for effect values,
+* created a way to pass them to functions, and
+* implemented a "runner" that can evaluate effects.
+
+## So, What Is A Monad?
+
+A monad is just a formal definition (rooted in [category theory][theory]) of what was coded above! It comprises three rules (using Haskell syntax):
+
+1. Left identity: `return x >>= f ≡ f x`
+2. Right identity: `m >>= return ≡ m`
+3. Associativity: `(m >>= f) >>= g ≡ m >>= (\x -> f x >>= g)`
+
+For those unfamiliar with Haskell, the above can seem pretty daunting. But, let's try and rewrite them in English:
+
+1. An effect (`return x`) after binding it to a function (`>>= f`), should be equivelant (`≡`) to `f(x)`.
+
+2. An effect (`m`) when bound to the function that creates an effect (`>>= return`), should return the equivelant effect (`≡ m`).
+
+3. As with addition and multiplication, parethesis shouldn't matter. Assuming `f(x)` returns an effect, then `(m >>= f) >>= g` should produce the same result as `m >>= (\x -> f x >>= g)`.
+
+Our `Effect` class is a Monad as-as.
+
+The case class constructors acts as the `return` function in the laws: wrapping the value and defining it as an effect value. And the `bind` method is the same as Haskell's `>>=` operator.
+
+## Examples of Monads
+
+While our derived use-case for a monad was code that contained side-effects, nothing about monads requires that they be used in that context.
+
+* Option
+* Try
+* Either
+* Future
+
+These are all examples of a value in a context for which mapping a function should result in a new value in the same type context. Once a value is Optional, any result derived from it _must also be Optional_. The same goes for Try, Futures, Eithers, etc.
+
+[google]:    https://www.google.com/search?q=monad
+[wikipedia]: https://en.wikipedia.org/wiki/Monad_(functional_programming)
+[theory]:    https://en.wikipedia.org/wiki/Monad_(category_theory)
+[laws]:      https://wiki.haskell.org/Monad_laws
+[scala]:     https://www.scala-lang.org/
