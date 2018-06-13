@@ -147,7 +147,7 @@ res: (io.Thunk[Unit], io.Thunk[Unit]) = (
 )
 ```
 
-Now what we need is a way to use the result of our _effect_ value and get an _effect_ returned. Instead of `(Effect[A], Effect[A])` returned, we'd like to get back `Effect[(A, A)]`.
+We need a way to use the result of our _effect_ value and get an _effect_ returned. Instead of `(Effect[A], Effect[A])` returned, we'd like to get back `Effect[(A, A)]`.
 
 We'll do this by creating a `bind` method in our base `Effect` class and a new subclass for it:
 
@@ -168,7 +168,7 @@ object io {
 }
 ```
 
-Why does `f` need to return an `Effect[A]`?
+Why does `f` need to return an `Effect`?
 
 Don't forget that by using an effect value, the result is also - by definition - an effect value.
 
