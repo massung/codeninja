@@ -172,7 +172,7 @@ Why does `f` need to return an `Effect`?
 
 Don't forget that by using an effect value, the result is also - by definition - an effect value.
 
-*An astute reader will notice that our `bind` method has the same type signature as Scala's `flatMap` method.*
+*An astute reader will notice that our `bind` method has the same type signature as Scala's `flatMap` method. In fact, we could rename it `flatMap` and it would work in `for` comprehensions!*
 
 Let's try it out...
 
