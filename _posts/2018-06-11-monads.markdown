@@ -251,12 +251,16 @@ To fix this we...
 
 Coming full circle...
 
-A monad is just a formal definition (rooted in [category theory][theory]) of what was coded above! In short, a monad is a type that is capable of two actions:
+A monad is just a formal definition (rooted in [category theory][theory]) of what was coded above! In short, _a monad is used to categorize values and functions in a type-safe manner_. 
 
-* taking a value and wrapping it; and
-* binding that value to a function
+To do this, you can think of a monad as an interface exposing two methods (using Haskell naming):
 
-And, composing those two actions together, they _must_ follow these three rules:
+* `return` takes a value and return it wrapped in the monad; and
+* `>>=` binds a function in the monad
+
+*In Scala, these functions would typically be a constructor or `apply` and `flatMap`.*
+
+And, composing those two methods, they _must_ follow these three rules:
 
 1. Left identity: `return x >>= f ≡ f x`
 2. Right identity: `m >>= return ≡ m`
@@ -291,7 +295,7 @@ res: (Int, Int) = (2, 2)
 
 ## Examples of Monads
 
-While our derived use-case for a monad was code that contained side-effects, the use of monads is not exclusive to side-effect code. _They are used to categorize values and functions in a type-safe manner_! Consider these classes that are also monads:
+While our derived use-case for a monad was code that contained side-effects, the use of monads is not exclusive to side-effect code. Again, _monads are used to categorize values and functions in a type-safe manner_! Consider these classes that are also monads:
 
 * Option
 * Try
