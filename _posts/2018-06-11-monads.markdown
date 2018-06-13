@@ -87,7 +87,7 @@ def x = println("Hello")
 
 Now, when we use it, the _effect_ happens every time.
 
-```
+```scala
 @ pair(x)
 Hello
 res: (Unit, Unit) = ((), ())
