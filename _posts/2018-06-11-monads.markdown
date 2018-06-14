@@ -182,9 +182,7 @@ And, those two functions must be coded in such a way as to adhere to these three
 And translated into English...
 
 1. The "constructor" for a monad acts as the identity function when passed to `flatMap`.
-
 2. The result of calling `flatMap` with a function, should be the same as calling the function with the value injected.
-
 3. As long as the order of operations is unchanged, where the `flatMap` calls are bound should not affect the result.
 
 Let's make sure that our `Effect` class implements these laws correctly:
