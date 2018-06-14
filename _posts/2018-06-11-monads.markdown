@@ -128,7 +128,7 @@ case class Effect[A](private val value: A) {
 
 > Using the result of an _effect_ implies that the value returned must also - by definition - be the result of an _effect_.
 
-And to help ourselves, let's create a way to "map" a _pure_ function and get an _effect_ function back:
+And to help ourselves, let's create a way to "map" a _pure_ function and get back a function that returns an `Effect`:
 
 ```scala
 def fmap[A,B](f: A => B): (A => Effect[B]) = {
@@ -136,13 +136,10 @@ def fmap[A,B](f: A => B): (A => Effect[B]) = {
 }
 ```
 
-We are now be able to map the value of an `Effect` through a _pure_ function and get the result back as a new `Effect`.
+Hurrah!
 
 ```scala
-@ val x = Effect(Random.nextInt(100))
-x: Effect[Int] = Effect(9)
-
-@ x.flatMap(fmap(pair))
+@ Effect(Random.nextInt(100)).flatMap(fmap(pair))
 Effect[(Int, Int)] = Effect((9, 9))
 ```
 
@@ -176,11 +173,19 @@ The formal definition of a Monad is any type that implements two functions:
 1. inject a value into the monad; and
 2. map that value and returns a new monad instance
 
-And, those two functions must be coded in such a way as to adhere to these three [laws][laws]:
+And, those two functions must be coded in such a way as to adhere to these three [laws][laws] ([Haskell][haskell] syntax):
 
-1. Right identity: `m.flatMap(inject) ≡ m`
-2. Left identity: `inject(x).flatMap(f) ≡ f(x)`
-3. Associativity: `m.flatMap(f).flatMap(g) ≡ m.flatMap(x => f(x).flatMap(g))`
+1. Right identity: `m >>= return ≡ m`
+2. Left identity: `return a >>= f ≡ f a`
+3. Associativity: `(m >>= f) >>= g ≡ m >>= (\x -> f x >>= g)`
+
+And translated into English...
+
+1. The "constructor" for a monad acts as the identity function when passed to `flatMap`.
+
+2. The result of calling `flatMap` with a function, should be the same as calling the function with the value injected.
+
+3. As long as the order of operations is unchanged, where the `flatMap` calls are bound should not affect the result.
 
 Let's make sure that our `Effect` class implements these laws correctly:
 
@@ -189,15 +194,12 @@ Let's make sure that our `Effect` class implements these laws correctly:
 @ def sq(x: Int) = x*x
 
 // right identity
-@ Effect(1).flatMap(Effect.apply)
-Effect[Int] = Effect(1)
+@ Effect(1).flatMap(Effect.apply) == Effect(1)
+Boolean: true
 
 // left identity
-@ Effect(1).flatMap(fmap(inc))
-Effect[Int] = Effect(2)
-
-@ fmap(inc)(1)
-Effect[Int] = Effect(2)
+@ Effect(1).flatMap(fmap(inc)) == fmap(inc)(1)
+Boolean: true
 
 // associativity 
 @ Effect(1).flatMap(fmap(inc)).flatMap(fmap(sq))
@@ -216,6 +218,10 @@ Ignoring `Option`, one of the first experiences programmers get with monads is t
 What makes the `IO` monad different is that the values it wraps are a _description_ of code to evaluate (e.g. a "thunk"). That's it! 
 
 There's truly nothing mystical or different other than the category of value being stored, which is a body of code to evaluate as opposed to the result of executing that code.
+
+The only thing that part about the `IO` monad that is "special" is that - eventually - you need to evaluate it. In [Haskell][haskell] this is implicitly done for you by the `main` function (which is why it returns `IO`). Using the [cats-effect][cats] library, you're responsible for doing it yourself. 
+
+Regardless, the problem being solved is (conceptually) the same, and the solution is exactly the same.
 
 ## fin.
 
