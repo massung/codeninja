@@ -36,7 +36,7 @@ For the code in this post I'll be using [Scala][scala] and the [Ammonite-REPL][a
 
 We'll begin with a premise...
 
-> All code produces values, and those values fall into one of two categories: _pure_ or _effect_.
+> All code produces values, and those values fall into one of two categories: _pure_ or _effect_. <sup>*</sup>
 
 Consider the following line of code:
 
@@ -60,7 +60,7 @@ Next, let's stipulate that...
 
 That stipulation may be a bit much to accept. But, consider: any computation we perform after getting our random number was dependent on the side-effect used to produce it.
 
-Instead of side-effects, think about `Try` values. If it's possible for a computation to fail and return an error, then every value derived from it must also be possible to fail (and therefore also be a `Try`).
+Instead of side-effects, think about `Try` values. If it's possible for a computation to fail and return an error, then every value derived from it must also be possible to fail (and therefore also be a `Try`). <sup>**</sup>
 
 ## The Problem
 
@@ -218,6 +218,10 @@ There's truly nothing mystical or different other than the category of value bei
 
 I hope this helps you to understand monads a bit more, what problem(s) they are used to solve, and - more importantly - giving you the knowledge to know when and how to use them effectively!
 
+<sup>*</sup> *There are many different categories of values (e.g. optional, either, asynchronous, ...), but for our problem we're going to focus only on this particular category...*
+
+<sup>**</sup> *If coming from a language like [Go][go], think about functions that return `error` values. If you just blissfully ignore them it's a bug. You need to either handle them (and do something else that can't fail), or propogate the error, which instantly means your return value is now in the category of "may fail".*
+
 [google]:    https://www.google.com/search?q=monad
 [wikipedia]: https://en.wikipedia.org/wiki/Monad_(functional_programming)
 [theory]:    https://en.wikipedia.org/wiki/Monad_(category_theory)
@@ -228,3 +232,4 @@ I hope this helps you to understand monads a bit more, what problem(s) they are 
 [async]:     https://javascript.info/async-await
 [monix]:     https://monix.io/
 [ammonite]:  http://ammonite.io/#Ammonite-REPL
+[go]:        https://golang.org/
