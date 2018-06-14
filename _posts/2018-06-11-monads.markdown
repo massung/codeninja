@@ -109,7 +109,7 @@ But, now let's call our `pair` function with it:
 
 ```scala
 @ pair(x)
-(Effect[Int], Effect[Int]) = ..
+(Effect[Int], Effect[Int]) = (Effect(48), Effect(48))
 ```
 
 While this is correct, it's not _really_ what's desired. We want the return value to be an `Effect` that results in a pair, not a pair of effects.
