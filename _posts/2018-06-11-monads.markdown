@@ -112,7 +112,7 @@ But, now let's call our `pair` function with it:
 (Effect[Int], Effect[Int]) = ..
 ```
 
-While this is correct, it's not _really_ what's desired. We'd like to be able to pass our `Effect` to the `pair` function and have the returned type be `Effect[(T, T)]`.
+While this is correct, it's not _really_ what's desired. We want the return value to be an `Effect` that results in a pair, not a pair of effects.
 
 ## A Better Solution
 
