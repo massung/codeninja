@@ -176,7 +176,7 @@ The formal definition of a Monad is any type that implements two functions:
 1. inject a value into the monad; and
 2. map that value and returns a new monad instance
 
-And, those two functions must be coded in such a way as to adhere to these three laws:
+And, those two functions must be coded in such a way as to adhere to these three [laws][laws]:
 
 1. Right identity: `m.flatMap(inject) ≡ m`
 2. Left identity: `inject(x).flatMap(f) ≡ f(x)`
