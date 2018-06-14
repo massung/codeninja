@@ -148,9 +148,17 @@ Effect[(Int, Int)] = Effect((9, 9))
 Let's recap the problem:
 
 * There are two categories of values: _pure_ and _effect_.
-* There's no type-safe way to distinguish between _pure_ and _effect_ values.
+* There's no type-safe way to distinguish between them.
 
-To solve this problem we've defined a functional, type-safe wrapper around _effect_ values, and guaranteed that any use of an _effect_ returns an _effect_. This prevents us (at compile time) from ever accidentally using an _effect_ value in a _pure_ context.
+To solve this problem we've defined a functional, type-safe wrapper around _effect_ values, and guaranteed that any result derived from an _effect_ value is also treated as an _effect_. This prevents us from ever accidentally using an _effect_ value in a _pure_ context.
+
+Just to show that this solution could be used for another, completely different category of values, let's treat that previous paragraph as a mad lib:
+
+*...around asynchronous values, and guaranteed that any result derived from an asynchronous value is also treated as asynchronous. This prevents us from ever accidentally using an asynchronous value in a synchronous context.*
+
+Or how about...
+
+*...around optional values, and guaranteed that any result derived from an optional value is also treated as optional...*
 
 ## So, What Is A Monad?
 
