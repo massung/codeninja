@@ -217,7 +217,7 @@ What makes the `IO` monad different is that the values it wraps are a _descripti
 
 There's truly nothing mystical or different other than the category of value being stored, which is a body of code to evaluate as opposed to the result of executing that code.
 
-The only thing that part about the `IO` monad that is "special" is that - eventually - you need to evaluate it. In [Haskell][haskell] this is implicitly done for you by the `main` function (which is why it returns `IO`). Using the [cats-effect][cats] library, you're responsible for doing it yourself. 
+The _only_ thing about the `IO` monad that is "special" is that - eventually - it needs to be evaluated. In [Haskell][haskell] this is implicitly done by the `main` function (which is why it returns `IO`). Using the [cats-effect][cats] library in [Scala][scala], you're responsible for doing it yourself. 
 
 Regardless, the problem being solved is (conceptually) the same, and the solution is exactly the same.
 
