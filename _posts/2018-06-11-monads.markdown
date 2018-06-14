@@ -196,6 +196,9 @@ Effect[Int] = Effect(1)
 @ Effect(1).flatMap(fmap(inc))
 Effect[Int] = Effect(2)
 
+@ fmap(inc)(1)
+Effect[Int] = Effect(2)
+
 // associativity 
 @ Effect(1).flatMap(fmap(inc)).flatMap(fmap(sq))
 Effect[Int] = Effect(4)
