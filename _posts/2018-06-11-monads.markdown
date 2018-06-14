@@ -164,7 +164,7 @@ Or how about...
 
 A monad is just a formal definition (rooted in [category theory][theory]) of what was coded above. In short:
 
-> A monad is used to categorize values in a type-safe manner. 
+> A monad is used to categorize values and compose functions within that category in a type-safe manner. 
 
 Our `Effect` class is a monad that wraps values that were derived through the use of side-effects. But, the use of monads is not exclusive to that use-case. These are also examples of monads:
 
