@@ -218,9 +218,9 @@ There's truly nothing mystical or different other than the category of value bei
 
 I hope this helps you to understand monads a bit more, what problem(s) they are used to solve, and - more importantly - giving you the knowledge to know when and how to use them effectively!
 
-[^1] *There are many different categories of values (e.g. optional, either, asynchronous, ...), but for our problem we're going to focus only on this particular category...*
+[^1]: *There are many different categories of values (e.g. optional, either, asynchronous, ...), but for our problem we're going to focus only on this particular category...*
 
-[^2] *If coming from a language like [Go][go], think about functions that return `error` values. If you just blissfully ignore them it's a bug. You need to either handle them (and do something else that can't fail), or propogate the error, which instantly means your return value is now in the category of "may fail".*
+[^2]: *If coming from a language like [Go][go], think about functions that return `error` values. If you just blissfully ignore them it's a bug. You need to either handle them (and do something else that can't fail), or propogate the error, which instantly means your return value is now in the category of "may fail".*
 
 [google]:    https://www.google.com/search?q=monad
 [wikipedia]: https://en.wikipedia.org/wiki/Monad_(functional_programming)
