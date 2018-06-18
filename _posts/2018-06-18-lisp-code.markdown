@@ -1,0 +1,76 @@
+---
+title:  "Common Lisp Code"
+date:   2018-06-18
+categories: [programming,lisp]
+tags: [lisp]
+---
+I was going through some of my old [GitHub][github] repositories and came across my set of [Common Lisp][lisp] libraries that I made over the course of a few years and have consistenly returned to, always found useful, and kept up-to-date. 
+
+> This is code that I'm *extremely* proud of.
+
+Each library is loadable with [ASDF][asdf], very simple (the code is meant to be very understandable at the expense of a little performance), is heavily commented, and has a comprehensive README file that details how to use the code. Most of the libraries build on each other. I use [ClozureCL][ccl], but almost all of these packages will work as-is with any implementation; I've used many of these on [SBCL][sbcl] and [LispWorks][lispworks].
+
+Without further adieu, here are the libraries...
+
+| Library | Description
+|---------|-------------
+| [future][future] | promises and futures ([^*])
+| [lazy][lazy] | lazy evaluation (memoizing thunks)
+| [queue][queue] | simple FIFO implementation
+| [heap][heap] | simple binary heap
+| [huffman][huffman] | huffman encoder/decoder
+| [base64][base64] | BASE64 encoder/decoder
+| [sha1][sha1] | SHA1 digest and HMAC
+| [parse][parse] | monadic parsing
+| [re][re] | Lua-style regular expressions
+| [lexer][lexer] | string token lexer
+| [csv][csv] | comma separated values encoder/decoder
+| [json][json] | JSON encoder/decoder
+| [rfc-date][date] | RFC date encoder/decoder
+| [markup][markup] | XML entity encoder/decoder
+| [xml][xml] | XML parser and document querying
+| [url][url] | URL parser
+| [html][html] | HTML renderer
+| [rss][rss] | RSS parser and aggregator
+| [http][http] | HTTP client and server with continuations ([^*])
+| [targa][targa] | targa image decoder
+
+[^*]: Requires [CCL][ccl]
+
+Maybe you will find the code in these educational or even useful in your own projects! If you do end up using one of them, please let me know.
+
+Cheers!
+
+# fin.
+
+[github]:    https://github.com/massung
+[lisp]:      http://lisp-lang.org/
+[ccl]:       https://ccl.clozure.com/
+[sbcl]:      http://www.sbcl.org/
+[lispworks]: http://www.lispworks.com/
+[capi]:      http://www.lispworks.com/products/capi.html
+[asdf]:      https://common-lisp.net/project/asdf/
+[future]:    https://github.com/massung/future
+[lazy]:      https://github.com/massung/lazy
+[queue]:     https://github.com/massung/queue
+[heap]:      https://github.com/massung/heap
+[huffman]:   https://github.com/massung/huffman
+[sha1]:      https://github.com/massung/sha1
+[base64]:    https://github.com/massung/base64
+[parse]:     https://github.com/massung/parse
+[re]:        https://github.com/massung/re
+[lexer]:     https://github.com/massung/lexer
+[csv]:       https://github.com/massung/csv
+[json]:      https://github.com/massung/json
+[date]:      https://github.com/massung/date
+[markup]:    https://github.com/massung/markup
+[xml]:       https://github.com/massung/xml
+[url]:       https://github.com/massung/url
+[html]:      https://github.com/massung/html
+[rss]:       https://github.com/massung/rss
+[http]:      https://github.com/massung/http
+[image]:     https://github.com/massung/http-image
+[bitstream]: https://github.com/massung/bit-stream
+[targa]:     https://github.com/massung/targa
+[gif]:       https://github.com/massung/gif
+[panel]:     https://github.com/massung/output-panel
