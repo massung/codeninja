@@ -12,7 +12,7 @@ Each library is loadable with [ASDF][asdf], very simple (the code is meant to be
 
 Without further adieu, here are the libraries...
 
-* [future][future] - promises and futures [^1]
+* [future][future] - promises and futures ([^1])
 * [lazy][lazy] - lazy evaluation (memoizing thunks)
 * [queue][queue] - simple FIFO implementation
 * [heap][heap] - simple binary heap
@@ -29,15 +29,15 @@ Without further adieu, here are the libraries...
 * [xml][xml] - XML parser and document querying
 * [url][url] - URL parser
 * [html][html] - HTML renderer
-* [rss][rss] - RSS parser and aggregator
-* [http][http] - HTTP client and server with continuations [^1]
+* [http][http] - HTTP client and server with continuations ([^1])
+* [rss][rss] - RSS parser and aggregator ([^1])
 * [targa][targa] - targa image decoder
+
+[^1]: Requires [ClozureCL][ccl] for threading/networking
 
 Maybe you will find the code in these educational or even useful in your own projects! If you do end up using one of them, please let me know.
 
 Cheers!
-
-[^1]: Requires [ClozureCL][ccl]
 
 # fin.
 
