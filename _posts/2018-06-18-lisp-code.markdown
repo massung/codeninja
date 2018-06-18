@@ -6,7 +6,7 @@ tags: [lisp]
 ---
 I was going through some of my old [GitHub][github] repositories and came across my set of [Common Lisp][lisp] libraries that I made over the course of a few years and have consistenly returned to, always found useful, and kept up-to-date. 
 
-> This is code that I'm *extremely* proud of.
+> This is code that I'm *extremely* proud of due to its simplicity and that it is still in use by myself and others years later...
 
 Each library is loadable with [ASDF][asdf], very simple (the code is meant to be very understandable at the expense of a little performance), is heavily commented, and has a comprehensive README file that details how to use the code. Most of the libraries build on each other. I use [ClozureCL][ccl], but almost all of these packages will work as-is with any implementation; I've used many of these on [SBCL][sbcl] and [LispWorks][lispworks].
 
