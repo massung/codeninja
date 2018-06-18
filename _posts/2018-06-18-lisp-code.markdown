@@ -12,34 +12,32 @@ Each library is loadable with [ASDF][asdf], very simple (the code is meant to be
 
 Without further adieu, here are the libraries...
 
-| Library | Description
-|---------|-------------
-| [future][future] | promises and futures ([^*])
-| [lazy][lazy] | lazy evaluation (memoizing thunks)
-| [queue][queue] | simple FIFO implementation
-| [heap][heap] | simple binary heap
-| [huffman][huffman] | huffman encoder/decoder
-| [base64][base64] | BASE64 encoder/decoder
-| [sha1][sha1] | SHA1 digest and HMAC
-| [parse][parse] | monadic parsing
-| [re][re] | Lua-style regular expressions
-| [lexer][lexer] | string token lexer
-| [csv][csv] | comma separated values encoder/decoder
-| [json][json] | JSON encoder/decoder
-| [rfc-date][date] | RFC date encoder/decoder
-| [markup][markup] | XML entity encoder/decoder
-| [xml][xml] | XML parser and document querying
-| [url][url] | URL parser
-| [html][html] | HTML renderer
-| [rss][rss] | RSS parser and aggregator
-| [http][http] | HTTP client and server with continuations ([^*])
-| [targa][targa] | targa image decoder
-
-[^*]: Requires [CCL][ccl]
+* [future][future] - promises and futures [^1]
+* [lazy][lazy] - lazy evaluation (memoizing thunks)
+* [queue][queue] - simple FIFO implementation
+* [heap][heap] - simple binary heap
+* [huffman][huffman] - huffman encoder/decoder
+* [base64][base64] - BASE64 encoder/decoder
+* [sha1][sha1] - SHA1 digest and HMAC
+* [parse][parse] - monadic parsing
+* [re][re] - Lua-style regular expressions
+* [lexer][lexer] - string token lexer
+* [csv][csv] - comma separated values encoder/decoder
+* [json][json] - JSON encoder/decoder
+* [rfc-date][date] - RFC date encoder/decoder
+* [markup][markup] - XML entity encoder/decoder
+* [xml][xml] - XML parser and document querying
+* [url][url] - URL parser
+* [html][html] - HTML renderer
+* [rss][rss] - RSS parser and aggregator
+* [http][http] - HTTP client and server with continuations [^1]
+* [targa][targa] - targa image decoder
 
 Maybe you will find the code in these educational or even useful in your own projects! If you do end up using one of them, please let me know.
 
 Cheers!
+
+[^1]: Requires [ClozureCL][ccl]
 
 # fin.
 
