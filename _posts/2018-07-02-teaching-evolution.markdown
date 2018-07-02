@@ -202,6 +202,23 @@ def run = {
 }
 ```
 
+And some selected output...
+
+```
+@ run
+Enter something to evolve: Daddy and Isabel programmed evolution using Scala!
+generation 1000: D`dbz `md"Iqcaik$npngqaopgg!gvmktshom"uuhoh!Rcao`
+generation 2000: Daddy amd Iqcaek!qpngraomge!fvnktshon"urhoh Scala!
+generation 3000: Daddy amd Itabek qqngrammee!fvnkttion!urinh Scala!
+generation 4000: Daddy and Itabek pqngrammee!fvnkttion urinh Scala!
+generation 5000: Daddy and Itabel programmed fvnkttion uring Scala!
+generation 6000: Daddy and Itabel programmed fvokttion using Scala!
+generation 7000: Daddy and Isabel programmed evolttion using Scala!
+generation 8000: Daddy and Isabel programmed evolttion using Scala!
+generation 9000: Daddy and Isabel programmed evolution using Scala!
+generation 10000: Daddy and Isabel programmed evolution using Scala!
+```
+
 ---
 
 In the end, she was able to grasp how selective breeding - combined with tiny, random changes - over a long periods of time could transform into something much better. This was true even if what was started with was something small and non-sensical and the target was extremely large (we used [lorem ipsum][lorem] as the target and she noticed that it took a much larger population several hundred thousand generations to evolve to it).
