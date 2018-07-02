@@ -136,22 +136,22 @@ _I recommend using [Ammonite-REPL][ammonite] and copy/pasting the code into the 
 Next, we tested the code together and let her see how each part worked just like the graph that I drew (see above) on paper.
 
 ```scala
-scala> randomString(10)
+@ randomString(10)
 String = "CRcp(4av~]"
 
-scala> "Test".fitness("Test")
+@ "Test".fitness("Test")
 Double = 0.0
 
-scala> "Test".fitness("foobar")
+@ "Test".fitness("foobar")
 Double = 261.0
 
-scala> "abcde".cross("12345678")
+@ "abcde".cross("12345678")
 String = "123de"
 
-scala> "abcde".mutate(1.0)
+@ "abcde".mutate(1.0)
 String = "a]cd"
 
-scala> initialPopulation(5)
+@ initialPopulation(5)
 IndexedSeq[String] = Vector(
   "$%iJzT<EUF/",
   "m:n]VpeKy1jY_|{QJn|l^M",
@@ -160,7 +160,7 @@ IndexedSeq[String] = Vector(
   "\u007f<H9JAoJ*ETaL)*0\";@\\{C,y~;S"
 )
 
-scala> initialPopulation(5).fitToString("Hello").nextGen(2, 0.1)
+@ initialPopulation(5).fitToString("Hello").nextGen(2, 0.1)
 IndexedSeq[String] = Vector(
   "UN=q]T0W9I~rte$K'biSBmh",
   "2Cu;pre\u007fNz<,fm*+-&iSBmh",
