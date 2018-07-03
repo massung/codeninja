@@ -62,7 +62,7 @@ object Evolution {
       }
     }
 
-    /** Since a new DNA sequence is a combination of "mom" and "data", the
+    /** Since a new DNA sequence is a combination of "mom" and "dad", the
       * first step is to crossover two DNA sequences: take a slice of one
       * and a slice of the other and combine them together.
       */
@@ -225,9 +225,9 @@ In the end, she was able to grasp how selective breeding - combined with tiny, r
 
 I later extended the program a bit allowing her to play with the other parameters. This allowed her - on her own - to reach conclusions regarding some rather complex topics:
 
-* Inbreeding - small populations beinging unable to evolve;
-* Genetic malformations - very high mutation rates preventing evolution;
-* Selection of the fittest - too few mating choices leading to unfit children;
+* Inbreeding - small populations were unable to evolve;
+* Genetic malformations - very high mutation rates prevented evolution;
+* Selection of the fittest - too few mating choices led to unfit children;
 
 But I'll leave those bits as a tiny exercise for the reader...
 
