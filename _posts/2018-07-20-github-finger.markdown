@@ -31,26 +31,7 @@ You can use this to look up the information on any [GitHub][github] user. If tha
 
 Head over to [http://finger.codeninja.blog](http://finger.codeninja.blog/?q=massung) to see my plan and learn how you can link your plan and even embed it on your blog.
 
-Want to let everyone know what you're working on? [Create][create] a `.plan` repository, make a simple [README][readme] and [issues][issues], then link to it in your `.signature` or embed it on your blog.
-
-```html
-<embed src="http://finger.codeninja.blog/username.html" />
-```
-
-Is HTML not your desired format? Maybe you just want text or markdown? Just change the extension on the URL to `.text` or `.md`. If you'd like to do this from the `finger` command, just take a moment and make a little script:
-
-```sh
-# finger.sh
-curl http://finger.codeninja.blog/$1.text
-```
-
-Or on Windows:
-
-```powershell
-# finger.ps1
-param($username)
-Invoke-RestMethod -Uri "http://finger.codeninja.blog/$username.text"
-```
+It's easy!
 
 # fin.
 
