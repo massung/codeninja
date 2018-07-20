@@ -21,7 +21,7 @@ The idea was to create a simple REST API that could be used to lookup a person a
 * [issues][issues] and tasks
 * project contributions and activity
 
-So, that's what I did...
+So, that's what I did... [^2]
 
 {% include finger.html %}
 
@@ -54,6 +54,8 @@ Invoke-RestMethod -Uri "http://finger.codeninja.blog/$username.text"
 
 [^1]: Obviously `fingerd` and the [finger][man] command still exist, but they are obscure and rarely used (by anyone I know) any more.
 
+[^2]: For those who care about such things, this was created with [Scala][scala].
+
 [protocol]: https://en.wikipedia.org/wiki/Finger_protocol
 [man]: https://linux.die.net/man/1/finger
 [github]: https://github.com/
@@ -64,3 +66,4 @@ Invoke-RestMethod -Uri "http://finger.codeninja.blog/$username.text"
 [issues]: https://help.github.com/articles/about-issues/
 [plan]: http://finger.codeninja.blog/?q=massung
 [create]: https://github.com/new
+[scala]: https://scala-lang.org/
