@@ -29,9 +29,9 @@ You can use this to look up the information on any [GitHub][github] user. If tha
 
 ## Usage
 
-Head over to [http://finger.codeninja.blog](http://finger.codeninja.blog/?q=massung) to see my plan and learn how you can link your plan and even embed it on your blog.
+Head over to [http://finger.codeninja.blog](http://finger.codeninja.blog/?q=massung) to see my plan and learn how you can link a plan and even embed it on your own web page/blog. It's easy! See?
 
-It's easy!
+{% include plan.html %}
 
 # fin.
 
