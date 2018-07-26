@@ -1,5 +1,5 @@
 ---
-title: "Scala Implicits to the Rescue!"
+title: "Scala Implicits Rescued Me!"
 date: 2018-07-26
 categories: [programming,scala,implicits]
 tags: [programming,scala,implicits,reflection]
