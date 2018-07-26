@@ -42,11 +42,10 @@ Of course, this fails to work for multiple reasons:
 * The `Option` values aren't handled by the Java function (crash).
 * The `None` values should be ignored, but aren't.
 
-Additionally, some of the values are primitives (`Int`, `Double`) and are not of type `Object` and need to be coerced:
+Additionally, some of the values are primitives and are not of type `Object` and need to be coerced:
 
 * `Int` to `java.lang.Integer`
 * `Double` to `java.lang.Double`
-* ...
 
 Scala does this already, but can't implicitly convert from `Option[primitive]` to `Option[Object]`.
 
