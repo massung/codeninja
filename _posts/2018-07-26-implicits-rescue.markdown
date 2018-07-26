@@ -87,9 +87,7 @@ And now, we can just call the Java function with any case class:
 performJavaOp(person: _*)
 ```
 
-Want to see it in action?
-
-{% include implicits.html %}
+Want to see it in action? [Try it on Scastie!][scastie]
 
 # fin.
 
@@ -101,3 +99,4 @@ Want to see it in action?
 [option]: https://www.scala-lang.org/api/2.12.6/scala/Option.html
 [product]: https://www.scala-lang.org/api/2.12.6/scala/Product.html
 [reflection]: https://docs.scala-lang.org/overviews/reflection/overview.html
+[scastie]: https://scastie.scala-lang.org/5JPXsK4DR0CkNByMjoHesw
