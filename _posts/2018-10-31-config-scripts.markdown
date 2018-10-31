@@ -38,7 +38,7 @@ ancestry    African
 process     /.../data.3.csv
 ```
 
-The above example might seem quite trivial (and it is). But, it's also quite simple. And, it's dead-simple to read/write for non-programmers.
+The above example might seem quite trivial (and it is). But, it's dead-simple to read and write for non-programmers. And, since it's just a namespace, properties are just straight-forward member access as opposed to DOM traversal or chronic dictionary lookups with `.get` to handle missing keys.
 
 ## Example Usage
 
