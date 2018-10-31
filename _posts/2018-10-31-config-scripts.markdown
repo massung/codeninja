@@ -38,7 +38,7 @@ ancestry    African
 process     /.../data.3.csv
 ```
 
-The above example might seem quite trivial (and it is), but it's _extremely_ flexible, dead-simple to use and read for a non-programmer, and doesn't require any heavyweight, hierarchal libraries like XML or JSON that may require extra code-side traversal.
+The above example might seem quite trivial (and it is), but it's _extremely_ flexible, dead-simple to read/write for a non-programmer, and doesn't require any heavyweight, hierarchal libraries like XML or JSON that may require extra code-side traversal.
 
 ## Example Usage
 
