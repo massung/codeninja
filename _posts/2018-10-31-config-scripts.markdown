@@ -105,7 +105,7 @@ class ConfigScript:
         "Load and execute the lines of a script."
         cwd = os.getcwd()
 
-        # reading from standard in doesn't change the diretory
+        # change to the directory of the script
         if source != '-':
             path, source = os.path.split(source)
 
@@ -124,7 +124,7 @@ class ConfigScript:
                 cmd, *rest = cmdline
 
                 # lookup the method
-                method = self.cmds.get(cmd)
+                method = self.cmds.get(cmd.lower())
                 if method is None:
                     raise RuntimeError(cmd + ' ?')
 
