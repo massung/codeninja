@@ -1,6 +1,6 @@
 ---
 title: "Exploring Nim"
-date: 2018-10-31
+date: 2019-06-12
 categories: [programming,nim,hn]
 tags: [programming,nim,hn]
 ---
