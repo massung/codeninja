@@ -159,9 +159,9 @@ echo 5.add_10()
 echo add_10(5)
 ```
 
-I love it because I've always disliked putting methods inside a class/object. Objects should be data, what can be done to/with that data is far-reaching, and not just what the original author intended. UCS allows free functions to fill accomplish the same goals as extension methods, but without the added syntax.
+I love it because I've always disliked putting methods inside a class/object. Objects should be data, what can be done to/with that data is far-reaching, and not just what the original author intended. UCS allows free functions to accomplish the same goals as extension methods, but without the added syntax.
 
-This also enables various programming patterns to be imported as needed. The `seq` type doesn't come pre-loaded with `map`, `filter`, `zip`, etc. bloating your final executable. Instead, just `import sequtils` if needed, and then you get them.
+This also enables various functions to be imported as needed. The `seq` type doesn't come pre-loaded with `map`, `filter`, `zip`, etc. bloating your final executable. Instead, just `import sequtils` if needed, and then you get them.
 
 **Identifier Equality + UCS**
 
@@ -205,7 +205,7 @@ No language is perfect for all programmers. We each have our little "I wish..." 
 * Too much reliance on exceptions when there is an `Option` type;
 * Confusion around when `return` is needed and not;
 * Spawned tasks are confusing (see: `FlowVar`);
-* Over-use of operators (I'm against operator overloading);
+* Over-use of operators (I'm against overloading operators);
 
 I'm sure there will be more with time...
 
